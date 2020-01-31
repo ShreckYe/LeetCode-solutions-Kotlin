@@ -11,7 +11,7 @@ class Solution {
     }
 
     // Cancels brackets and return the index of the first character after what's cancelled.
-    private fun cancelBrackets(s: String, startIndex: Int): Int {
+     fun cancelBrackets(s: String, startIndex: Int): Int {
         var index = startIndex
         while (true) {
             val newIndex = cancelSingleBracketGroup(s, index)
@@ -21,7 +21,7 @@ class Solution {
         return index
     }
 
-    private fun cancelSingleBracketGroup(s: String, startIndex: Int): Int {
+     fun cancelSingleBracketGroup(s: String, startIndex: Int): Int {
         val firstChar = s.getOrElse(startIndex) { return CANCELLATION_FAILS }
         return doOnOpenOrClose(firstChar, {
             val innerEndIndex = cancelBrackets(s, startIndex + 1)
@@ -32,14 +32,14 @@ class Solution {
         }, { CANCELLATION_FAILS })
     }
 
-    private inline fun <R> doOnOpenOrClose(char: Char, onOpen: () -> R, onClose: () -> R): R =
+     inline fun <R> doOnOpenOrClose(char: Char, onOpen: () -> R, onClose: () -> R): R =
         when (char) {
             '(', '{', '[' -> onOpen()
             ')', '}', ']' -> onClose()
             else -> throw IllegalArgumentException("char=$char")
         }
 
-    private inline fun match(openChar: Char, closeChar: Char): Boolean =
+     inline fun match(openChar: Char, closeChar: Char): Boolean =
         when (openChar) {
             '(' -> ')'
             '{' -> '}'

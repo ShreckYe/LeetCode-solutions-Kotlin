@@ -11,6 +11,7 @@ repeat(1000) {
     println("Random test $it")
     val s = LOWERCASE_ALPHABETS.randomString(100)
     println("s = $s")
+    System.out.flush()
     val longestPalindrome = assertEqualsAndGet(on2Solution.longestPalindrome(s), manacherSolution.longestPalindrome(s))
     println("longestPalindrome.length = ${longestPalindrome.length}")
     println()

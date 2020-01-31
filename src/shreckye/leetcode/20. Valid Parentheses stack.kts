@@ -38,7 +38,7 @@ class Solution {
         return stack.empty()
     }
 
-    private inline fun match(openChar: Char, closeChar: Char): Boolean =
+     inline fun match(openChar: Char, closeChar: Char): Boolean =
         when (openChar) {
             '(' -> ')'
             '{' -> '}'
