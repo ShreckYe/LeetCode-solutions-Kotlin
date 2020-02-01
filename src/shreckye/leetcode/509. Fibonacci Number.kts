@@ -9,6 +9,7 @@ class Solution {
             val EYE = TwoTimesTwoSymmetricMatrix(1, 0, 1)
         }
 
+        // The product of two symmetric matrices is a symmetric matrix if and only if they commute.
         infix fun timesCommutatively(other: TwoTimesTwoSymmetricMatrix): TwoTimesTwoSymmetricMatrix =
             TwoTimesTwoSymmetricMatrix(
                 a11 * other.a11 + a12AndA21 * other.a12AndA21,

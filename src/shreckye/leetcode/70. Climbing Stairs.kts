@@ -7,6 +7,7 @@ class Solution {
         (FIBONACCI_MATRIX pow n).a22
 
     data class TwoTimesTwoSymmetricMatrix(val a11: Int, val a12AndA21: Int, val a22: Int) {
+        // The product of two symmetric matrices is a symmetric matrix if and only if they commute.
         infix fun timesCommutatively(other: TwoTimesTwoSymmetricMatrix): TwoTimesTwoSymmetricMatrix =
             TwoTimesTwoSymmetricMatrix(
                 a11 * other.a11 + a12AndA21 * other.a12AndA21,
