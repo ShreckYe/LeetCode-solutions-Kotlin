@@ -5,7 +5,9 @@ import kotlin.test.assertEquals
 for (longestCommonPrefix in listOf(
     _14__Longest_Common_Prefix_vertical_scanning.Solution()::longestCommonPrefix,
     _14__Longest_Common_Prefix_horizontal_scanning.Solution()::longestCommonPrefix,
-    _14__Longest_Common_Prefix_horizontal_scanning_1_line.Solution()::longestCommonPrefix
+    _14__Longest_Common_Prefix_horizontal_scanning_1_line.Solution()::longestCommonPrefix,
+    _14__Longest_Common_Prefix_horizontal_scanning_Streams.Solution()::longestCommonPrefix,
+    _14__Longest_Common_Prefix_horizontal_scanning_parallel_Streams.Solution()::longestCommonPrefix
 )) {
     println(longestCommonPrefix)
     System.out.flush()
