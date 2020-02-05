@@ -2,23 +2,6 @@ package shreckye.leetcode
 
 @Suppress("NOTHING_TO_INLINE")
 class Solution {
-    class SimpleCharStack(size: Int) {
-        val stack = CharArray(size)
-        var top = 0
-        fun push(c: Char) {
-            stack[top++] = c
-        }
-
-        inline fun peekOrElse(defaultValue: (Int) -> Char) =
-            stack.getOrElse(top - 1, defaultValue)
-
-        fun pop() =
-            stack[--top]
-
-        fun empty() =
-            top == 0
-    }
-
     fun isValid(s: String): Boolean {
         val stack = SimpleCharStack(s.length)
 
@@ -38,7 +21,24 @@ class Solution {
         return stack.empty()
     }
 
-     inline fun match(openChar: Char, closeChar: Char): Boolean =
+    class SimpleCharStack(size: Int) {
+        val stack = CharArray(size)
+        var top = 0
+        fun push(c: Char) {
+            stack[top++] = c
+        }
+
+        inline fun peekOrElse(defaultValue: (Int) -> Char) =
+            stack.getOrElse(top - 1, defaultValue)
+
+        fun pop() =
+            stack[--top]
+
+        fun empty() =
+            top == 0
+    }
+
+    inline fun match(openChar: Char, closeChar: Char): Boolean =
         when (openChar) {
             '(' -> ')'
             '{' -> '}'
