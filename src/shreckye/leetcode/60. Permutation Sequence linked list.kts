@@ -1,8 +1,18 @@
 package shreckye.leetcode
 
 class Solution {
-    fun getPermutation(n: Int, k: Int): String =
-        getPermutation((1..n).toIntNodeHead(), getIndices(n, k - 1).second)
+    fun getPermutation(n: Int, k: Int): String {
+        val permutationFirst = getPermutation((1..n).toIntNodeHead(), getIndices(n, k - 1).second)
+
+        val stringBuilder = StringBuilder(n)
+        var permutationNode = permutationFirst
+        while (permutationNode !== null) {
+            stringBuilder.append('0' + permutationNode.value)
+            permutationNode = permutationNode.next
+        }
+        return stringBuilder.toString()
+    }
+
 
     fun getIndices(n: Int, k: Int): Pair<IntNode> =
         // LeetCode doesn't compile [to]
@@ -12,8 +22,8 @@ class Solution {
             Pair(qk / n, IntNode(qk % n, indices))
         }
 
-    fun getPermutation(numsHead: IntNode, indiciesFirst: IntNode?): String =
-        if (numsHead.next === null) ""
+    fun getPermutation(numsHead: IntNode, indiciesFirst: IntNode?): IntNode? =
+        if (numsHead.next === null) null
         else {
             val i = indiciesFirst!!.value
             var numsPrevNode: IntNode = numsHead
@@ -21,7 +31,7 @@ class Solution {
             val numsNode = numsPrevNode.next!!
             numsPrevNode.next = numsNode.next
 
-            ('0' + numsNode.value) + getPermutation(numsHead, indiciesFirst.next)
+            IntNode(numsNode.value, getPermutation(numsHead, indiciesFirst.next))
         }
 
     // For LeetCode
