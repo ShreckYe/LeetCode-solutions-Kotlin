@@ -3,15 +3,15 @@ import kotlin.math.abs
 class Solution {
     companion object {
         val NUM_MONTHS = 12
-        val MONTH_DAYS = intArrayOf(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
-        val MONTH_DAYS_ACC = IntArray(NUM_MONTHS + 1).also {
+        val COMMON_YEAR_MONTH_DAYS = intArrayOf(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+        val COMMON_YEAR_MONTH_DAYS_ACC = IntArray(NUM_MONTHS + 1).also {
             it[0] = 0
             for (i in 0 until NUM_MONTHS)
-                it[i + 1] = it[i] + MONTH_DAYS[i]
+                it[i + 1] = it[i] + COMMON_YEAR_MONTH_DAYS[i]
         }
 
         fun getMonthDaysAcc(month: Int, isLeapYear: Boolean) =
-            MONTH_DAYS_ACC[month - 1].let { if (month > 2 && isLeapYear) it + 1 else it }
+            COMMON_YEAR_MONTH_DAYS_ACC[month - 1].let { if (month > 2 && isLeapYear) it + 1 else it }
     }
 
     fun daysBetweenDates(date1: String, date2: String): Int {
