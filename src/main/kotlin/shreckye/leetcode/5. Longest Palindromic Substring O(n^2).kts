@@ -12,7 +12,7 @@ class Solution {
             else
                 (1..min(center, lastPosition - center) step 2).asSequence()
                     .takeWhile { s[(center - it) / 2] == s[(center + it) / 2 - 1] }.last()
-        }.maxBy(Pair<Int, Int>::second)!!
+        }.maxByOrNull(Pair<Int, Int>::second)!!
         return s.substring((center - length) / 2, (center + length) / 2)
     }
 }
